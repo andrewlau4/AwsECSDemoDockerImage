@@ -1,6 +1,8 @@
 FROM public.ecr.aws/docker/library/node:20-bullseye
 
-COPY * ./
+RUN mkdir -p /app
+COPY * /app/
 RUN npm install
+RUN ls -la /app/*
 EXPOSE 80
-CMD [ "node", "helloworld.js"]
+CMD [ "node", "/app/helloworld.js"]
